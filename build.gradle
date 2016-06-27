@@ -1,0 +1,14 @@
+apply plugin: "groovy"
+apply plugin: "maven"
+apply plugin: "java"
+
+repositories {
+    mavenCentral()
+    maven { url 'http://oss.sonatype.org/content/repositories/snapshots/' }
+}
+
+dependencies {
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+    testCompile 'org.assertj:assertj-core:3.4.1'
+    testCompile 'org.hamcrest:hamcrest-core:1.3'
+}
