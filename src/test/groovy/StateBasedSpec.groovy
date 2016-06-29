@@ -44,7 +44,7 @@ class StateBasedSpec extends Specification {
     }
 
     def 'balance reflects all deposits and withdraws'() {
-        given:
+        setup:
             Account account = new Account(0)
         when:
             account.deposit(5)
@@ -55,9 +55,9 @@ class StateBasedSpec extends Specification {
         then:
             account.balance == 3
         and:
-            account.withdraw(2)
-        then:
-            account.balance == 1
+            account.canWithdraw(3)
+        cleanup:
+            account.clean();
     }
 
 }

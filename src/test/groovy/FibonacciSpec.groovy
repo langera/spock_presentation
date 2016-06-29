@@ -3,15 +3,15 @@ import spock.lang.Unroll
 
 import static org.langera.spock.Fibonacci.fib
 
+
+
 class FibonacciSpec extends Specification {
 
-    @Unroll
-    def 'fib(#n) == #expected'() {
-        expect:
-            fib(n) == expected
-        where:
-            n << [0, 1, 2, 3, 4, 5, 6, 7]
-            expected << [0, 1, 1, 2, 3, 5, 8, 13]
+    def 'fib of negative number is illegal'() {
+        when:
+            fib(-1)
+        then:
+            thrown IllegalArgumentException
     }
 
     @Unroll

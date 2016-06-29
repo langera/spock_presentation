@@ -7,8 +7,9 @@ import java.util.Arrays;
 import static org.junit.Assert.assertEquals;
 import static org.langera.spock.Fibonacci.fib;
 
-@RunWith(Parameterized.class)
 
+
+@RunWith(Parameterized.class)
 public class FibonacciTest {
 
     @Parameterized.Parameters( name = "{index}: fib({0})={1}" )

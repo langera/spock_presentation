@@ -21,7 +21,7 @@ public class StateBasedTest {
     }
 
     @Test
-    public void depositShouldIncrementBalance() throws Exception {
+    public void depositShouldIncrementBalance() {
         // given
         final Account account = new Account(1);
         // when
@@ -31,13 +31,13 @@ public class StateBasedTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void negativeAmountIsIllegal() throws Exception {
+    public void negativeAmountIsIllegal() {
         final Account account = new Account(1);
         account.withdraw(-5);
     }
 
     @Test
-    public void negativeAmountIsIllegalWithSpecificMessage() throws Exception {
+    public void negativeAmountIsIllegalWithSpecificMessage() {
         final Throwable thrown =
             Assertions.catchThrowable(() -> {
                 final Account account = new Account(1);
@@ -48,7 +48,7 @@ public class StateBasedTest {
     }
 
     @Test
-    public void balanceReflectsAllDepositsAndWithdraws() throws Exception {
+    public void balanceReflectsAllDepositsAndWithdraws() {
         final Account account = new Account(0);
         account.deposit(5);
         assertEquals(5, account.getBalance());

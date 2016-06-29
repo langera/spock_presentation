@@ -5,7 +5,7 @@ public class Account {
     private int balance;
 
     public Account(final int balance) {
-        this.balance = balance;
+        deposit(balance);
     }
 
     public void deposit(final int amount) {
@@ -22,7 +22,15 @@ public class Account {
         balance -= amount;
     }
 
+    public boolean canWithdraw(final int amount) {
+        return balance >= amount;
+    }
+
     public int getBalance() {
         return balance;
+    }
+
+    public void clean() {
+        balance = 0;
     }
 }

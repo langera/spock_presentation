@@ -3,6 +3,9 @@ package org.langera.spock;
 public class Fibonacci {
 
     public static int fib(final int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException(Integer.toString(n));
+        }
         if (n == 0 || n == 1) {
             return n;
         }

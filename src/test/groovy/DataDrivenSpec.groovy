@@ -19,7 +19,7 @@ class DataDrivenSpec extends Specification {
     }
 
     @Unroll
-    def 'depositing #amount to #initial amount = #expected'() {
+    def 'depositing #amount to #initial = #expected'() {
         given:
             Account account = new Account(initial)
         when:
@@ -32,7 +32,7 @@ class DataDrivenSpec extends Specification {
               0    | 1      || 1
               0    | 2      || 2
               1    | 2      || 3
-              2    | 1      || 3
+              2    | 1      || 666
     }
 
     @Unroll
