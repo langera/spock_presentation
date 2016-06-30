@@ -5,8 +5,8 @@ import org.langera.spock.Subscriber;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.calls;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PublisherTest {
@@ -24,8 +24,22 @@ public class PublisherTest {
 
         publisher.fire("hello");
 
-        Mockito.verify(subscriber1, calls(1)).receive("hello");
-        Mockito.verify(subscriber2, calls(1)).receive("hello");
-        Mockito.verify(subscriber3, calls(0)).receive("hello");
+        Mockito.verify(subscriber1, times(1)).receive("hello");
+        Mockito.verify(subscriber2, times(1)).receive("hello");
+        Mockito.verify(subscriber3, times(0)).receive("hello");
+    }
+
+    @Test
+    public void publisherRecoversSubscriberExceptionMockAndStub() {
+        final Subscriber subscriber1 = mock(Subscriber.class);
+        final Subscriber subscriber2 = mock(Subscriber.class);
+        Mockito.doThrow(new RuntimeException()).when(subscriber1).receive("hello");
+        publisher.add(subscriber1);
+        publisher.add(subscriber2);
+
+        publisher.fire("hello");
+
+        Mockito.verify(subscriber1, times(1)).receive("hello");
+        Mockito.verify(subscriber2, times(1)).receive("hello");
     }
 }

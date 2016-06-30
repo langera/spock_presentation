@@ -17,10 +17,11 @@ public class Publisher {
     }
 
     public void fire(Object event) {
-        subscribers.forEach(new Consumer<Subscriber>() {
-            @Override
-            public void accept(Subscriber subscriber) {
+        subscribers.forEach(subscriber -> {
+            try {
                 subscriber.receive(event);
+            } catch (Exception e) {
+                System.err.println("something better");
             }
         });
     }
