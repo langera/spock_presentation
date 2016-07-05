@@ -17,4 +17,5 @@ dependencies {
     testCompile 'org.springframework:spring-context:4.3.0.RELEASE'
     testCompile 'org.springframework:spring-beans:4.3.0.RELEASE'
     testCompile 'org.springframework:spring-test:4.3.0.RELEASE'
+    testCompile fileTree(dir: 'lib', include: '*.jar')
 }
