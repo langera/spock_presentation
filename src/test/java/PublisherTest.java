@@ -22,7 +22,7 @@ public class PublisherTest {
         publisher.add(subscriber1);
         publisher.add(subscriber2);
 
-        publisher.fire("hello");
+        publisher.publish("hello");
 
         Mockito.verify(subscriber1, times(1)).receive("hello");
         Mockito.verify(subscriber2, times(1)).receive("hello");
@@ -37,7 +37,7 @@ public class PublisherTest {
         publisher.add(subscriber1);
         publisher.add(subscriber2);
 
-        publisher.fire("hello");
+        publisher.publish("hello");
 
         Mockito.verify(subscriber1, times(1)).receive("hello");
         Mockito.verify(subscriber2, times(1)).receive("hello");

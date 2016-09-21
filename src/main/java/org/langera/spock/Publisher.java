@@ -16,7 +16,7 @@ public class Publisher {
         return subscribers;
     }
 
-    public void fire(Object event) {
+    public void publish(Object event) {
         subscribers.forEach(subscriber -> {
             try {
                 subscriber.receive(event);
