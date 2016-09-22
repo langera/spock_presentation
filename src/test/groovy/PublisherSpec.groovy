@@ -122,6 +122,11 @@ class PublisherSpec extends Specification {
         then:
             thrown Exception
 
+
+
+//        def process
+
+
 //
 //        1 * subscriber.receive('hello')                                                                                                // an argument that is equal to the String 'hello'
 //        1 * subscriber.receive(!'hello')                                                                                                  // an argument that is unequal to the String 'hello'
@@ -130,7 +135,11 @@ class PublisherSpec extends Specification {
 //        1 * subscriber.receive(!null)                                                                                                    // any non-null argument
 //        1 * subscriber.receive(_ as String)                                                                                             // any non-null argument that is-a String
 //        1 * subscriber.receive({ it.length > 3 })                                                                                        // an argument that satisfies the given predicate
+//        1 * subscriber._('hello')
+//        1 * _.receive('hello')
+//        1 * subscriber./rec.*/('hello')
 //        1 * process.command('ls', '-a', _, !null, { ['abc'].contains(it) })
+
 //
 //
 //

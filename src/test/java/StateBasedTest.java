@@ -1,7 +1,9 @@
 import org.assertj.core.api.Assertions;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.langera.spock.Account;
 
 import static org.junit.Assert.assertEquals;
@@ -37,7 +39,7 @@ public class StateBasedTest {
     }
 
     @Test
-    public void negativeAmountIsIllegalWithSpecificMessage() {
+    public void negativeAmountIsIllegalWithSpecificMessageJAssert() {
         final Throwable thrown =
             Assertions.catchThrowable(() -> {
                 final Account account = new Account(1);
@@ -45,6 +47,17 @@ public class StateBasedTest {
             });
         Assert.assertThat(thrown, IsInstanceOf.instanceOf(IllegalArgumentException.class));
         Assertions.assertThat(thrown).hasMessageContaining("amount: -5");
+    }
+
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
+    @Test
+    public void negativeAmountIsIllegalWithSpecificMessage() {
+        final Account account = new Account(1);
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("amount: -5");
+        account.withdraw(-5);
     }
 
     @Test
